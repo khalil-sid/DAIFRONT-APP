@@ -1,0 +1,73 @@
+
+<mat-toolbar  >
+    <span id="span"> Menu</span >
+    <button  mat-icon-button   (click)="drawer.toggle()" class="menuBtn"> 
+    <mat-icon > menu </mat-icon > 
+  </button> 
+
+  <span style="flex: auto; "></span>
+    <button mat-flat-button routerLink="/home" routerLinkActive="router-link-active" class="menuBtn">Home</button>
+    <button mat-flat-button [matMenuTriggerFor]="menuRef" class="menuBtn">
+        <mat-icon iconPositionEnd class="mat-18">keyboard_arrow_down</mat-icon>
+        Gestion des detections
+    </button>
+    
+    <mat-menu #menuRef="matMenu">
+        <button mat-menu-item >  Traiter détections </button>
+        <button mat-menu-item >  consulter détection </button>
+    </mat-menu>
+    <button mat-flat-button routerLink="/infraction"class="menuBtn">Gestion des infractions</button>
+    <button mat-raised-button color="accent" id="logoutBtn"> <mat-icon > logout </mat-icon >Connexion</button>
+    
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side" opened="true">
+      
+     
+      <button (click)="showFiller = !showFiller" mat-flat-button class="btn">
+        <mat-icon class="mat-18">dashboard</mat-icon>
+        Gestion des detections
+      </button>
+      @if (showFiller) {
+        <mat-list >
+            <mat-list-item class="sideList" >
+                <button mat-button routerLink="/detection"  >
+                    <mat-icon class="mat-18">dashboard</mat-icon > 
+                    Voir les détections
+                    
+                </button>
+            </mat-list-item>
+            
+           <mat-list-item class="sideList">
+            <button mat-button >
+                <mat-icon class="mat-18">dashboard</mat-icon> 
+                Qualifier les détections
+            </button>
+            
+           </mat-list-item >
+
+            <mat-list-item class="sideList">
+                <button mat-button>
+                    <mat-icon class="mat-18">dashboard</mat-icon> 
+                    Consulter les detections
+                </button>
+                
+            </mat-list-item>
+            
+        </mat-list>
+      }
+      <div class="sideBtn">
+        <button (click)="showFiller = !showFiller" mat-flat-button routerLink="/infraction" class="btn">
+            <mat-icon class="mat-18">dashboard</mat-icon>
+        Gestion des infractions
+      </button>
+    </div>
+    </mat-drawer>
+    
+    <div class="example-sidenav-content" (click)="drawer.close()">
+     
+     <router-outlet></router-outlet>
+    </div>
+  
+  </mat-drawer-container>
+ 

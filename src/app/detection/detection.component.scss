@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+
+mat-card{ 
+    width:98% ;
+    margin: 10px;
+    border-radius: 10px;
+    border-bottom: solid;
+    border-bottom-color: brown;
+    @include mat.card-overrides((
+        subtitle-text-color: orange,
+        elevated-container-color: rgb(254, 252, 252),
+      ));
+}
+.cardHeader{
+    color: rgb(24, 24, 25);
+    padding-bottom:15px;
+   
+}
